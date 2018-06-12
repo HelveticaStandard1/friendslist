@@ -19,7 +19,6 @@ export class PeopleListComponent implements OnInit {
 
   ngOnInit() {
     this.peopleService.getPeople().subscribe(res => {
-      console.log(res);
       this.people = res;
       this.dataSource = new MatTableDataSource(this.people);
       this.dataSource.sort = this.sort;
