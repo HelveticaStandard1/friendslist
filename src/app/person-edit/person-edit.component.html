@@ -1,0 +1,21 @@
+<mat-card>
+  <form #personForm="ngForm" (ngSubmit)="save(personForm.value)">
+    <mat-card-header>
+      <mat-card-title><h2>{{person.name ? 'Edit' : 'Add'}} Homie</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <input type="hidden" name="href" [(ngModel)]="person.id">
+      <mat-form-field>
+        <input matInput placeholder="Homie Name" [(ngModel)]="person.name"
+               required name="name" #name>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!personForm.form.valid">Save</button>
+      <button mat-raised-button color="secondary" (click)="removePerson(person._id)"
+              *ngIf="person._id" type="button">Delete</button>
+      <a mat-button routerLink="/people-list">Cancel</a>
+    </mat-card-actions>
+  </form>
+</mat-card>
