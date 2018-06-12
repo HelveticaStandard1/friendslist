@@ -1,7 +1,7 @@
 {
   "name": "friend-list",
   "version": "0.0.0",
-  "main": "app.js",
+  "main": "./bin/www",
   "scripts": {
     "ng": "ng",
     "start": "node ./bin/www",
