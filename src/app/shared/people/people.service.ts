@@ -7,6 +7,7 @@ import {Injectable} from '@angular/core';
 export class PeopleService {
   public API = '/api';
   public PERSON_API = this.API + '/people';
+  public LIST_PATH = '/list';
 
   constructor(private http: HttpClient) {
   }
@@ -35,8 +36,9 @@ export class PeopleService {
     return body || { };
   }
 
-  getPeople(): Observable<any> {
-    return this.http.get(this.PERSON_API, this.httpOptions).pipe(
+  getPeople(type): Observable<any> {
+    const url = this.PERSON_API + this.LIST_PATH + '/' + type;
+    return this.http.get(url, this.httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }

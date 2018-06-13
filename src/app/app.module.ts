@@ -12,7 +12,7 @@ import {
   MatInputModule,
   MatListModule,
   MatToolbarModule,
-  MatTableModule, MatSortModule, MatTabGroup, MatTabsModule
+  MatTableModule, MatSortModule, MatTabGroup, MatTabsModule, MatOptionModule, MatSelectModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -56,7 +56,9 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatTableModule,
     MatSortModule,
-    MatTabsModule
+    MatTabsModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [PeopleService],
   bootstrap: [AppComponent]

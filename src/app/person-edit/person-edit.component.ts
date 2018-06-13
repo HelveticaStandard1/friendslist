@@ -12,6 +12,11 @@ import {NgForm} from '@angular/forms';
 export class PersonEditComponent implements OnInit, OnDestroy {
   person: any = {};
   sub: Subscription;
+  friends = [
+    {value: 'dailyHomies', viewValue: 'Daily Homies'},
+    {value: 'fairWeather', viewValue: 'Fairweather Friends'},
+    {value: 'flakyFriends', viewValue: 'Flaky Friendies'}
+  ];
 
   constructor(private route: ActivatedRoute,
               private router: Router,

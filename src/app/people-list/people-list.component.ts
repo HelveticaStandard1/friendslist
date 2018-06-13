@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {PeopleService} from '../shared/people/people.service';
 import {MatSort, MatTableDataSource} from '@angular/material';
 
@@ -15,10 +15,11 @@ export class PeopleListComponent implements OnInit {
   constructor(private peopleService: PeopleService) {
   }
 
+  @Input() type: String;
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.peopleService.getPeople().subscribe(res => {
+    this.peopleService.getPeople(this.type).subscribe(res => {
       this.people = res;
       this.dataSource = new MatTableDataSource(this.people);
       this.dataSource.sort = this.sort;

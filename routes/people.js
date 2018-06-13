@@ -3,7 +3,14 @@ var router = express.Router();
 var Person = require('../models/person.js');
 
 /* GET ALL People */
-router.get('/people', function(req, res, next) {
+router.get('/people/list/:type', function (req, res, next) {
+  Person.find({type: req.params.type}, function (err, products) {
+    if (err) return next(err);
+    res.json(products);
+  });
+});
+
+router.get('/people', function (req, res, next) {
   Person.find(function (err, products) {
     if (err) return next(err);
     res.json(products);
@@ -11,7 +18,7 @@ router.get('/people', function(req, res, next) {
 });
 
 /* GET SINGLE PERSON BY ID */
-router.get('/people/:id', function(req, res, next) {
+router.get('/people/:id', function (req, res, next) {
   Person.findById(req.params.id, function (err, post) {
     if (err) return next(err);
     res.json(post);
@@ -19,7 +26,7 @@ router.get('/people/:id', function(req, res, next) {
 });
 
 /* SAVE PERSON */
-router.post('/people', function(req, res, next) {
+router.post('/people', function (req, res, next) {
   Person.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
@@ -27,7 +34,7 @@ router.post('/people', function(req, res, next) {
 });
 
 /* UPDATE PERSON */
-router.put('/people/:id', function(req, res, next) {
+router.put('/people/:id', function (req, res, next) {
   Person.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
@@ -35,7 +42,7 @@ router.put('/people/:id', function(req, res, next) {
 });
 
 /* DELETE PERSON */
-router.delete('/people/:id', function(req, res, next) {
+router.delete('/people/:id', function (req, res, next) {
   Person.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
