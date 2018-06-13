@@ -1,5 +1,5 @@
 <mat-card>
-  <form #personForm="ngForm" (ngSubmit)="save(personForm.value)">
+  <form #personForm="ngForm" (ngSubmit)="save(personForm.value, person._id)">
     <mat-card-header>
       <mat-card-title><h2>{{person.name ? 'Edit' : 'Add'}} Homie</h2></mat-card-title>
     </mat-card-header>

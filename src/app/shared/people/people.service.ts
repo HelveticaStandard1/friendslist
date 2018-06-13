@@ -55,8 +55,9 @@ export class PeopleService {
       );
   }
 
-  updatePerson(data): Observable<any> {
-    return this.http.put(this.PERSON_API, data, this.httpOptions)
+  updatePerson(form, id): Observable<any> {
+    const url = this.PERSON_API + '/' + id;
+    return this.http.put(url, form, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );

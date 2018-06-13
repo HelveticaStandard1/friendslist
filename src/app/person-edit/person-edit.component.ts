@@ -42,12 +42,20 @@ export class PersonEditComponent implements OnInit, OnDestroy {
     this.router.navigate(['/people-list']);
   }
 
-  save(form: NgForm) {
-    this.peopleService.postPerson(form).subscribe(res => {
-      this.router.navigate(['/people-list']);
-    }, (err) => {
-      console.log(err);
-    });
+  save(form: NgForm, id) {
+    if (!id) {
+      this.peopleService.postPerson(form).subscribe(res => {
+        this.router.navigate(['/people-list']);
+      }, (err) => {
+        console.log(err);
+      });
+    } else {
+      this.peopleService.updatePerson(form, id).subscribe(res => {
+        this.router.navigate(['/people-list']);
+      }, (err) => {
+        console.log(err);
+      });
+    }
   }
 
   removePerson(id) {
